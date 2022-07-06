@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FetchDataServiceService } from 'src/app/fetch-data-service.service';
+import { SearchService } from 'src/app/search.service';
 
 
 @Component({
@@ -9,7 +10,11 @@ import { FetchDataServiceService } from 'src/app/fetch-data-service.service';
 })
 export class HomeComponent implements OnInit {
 
+  filteredData:any[]=[];
+
+  inputValue:any=''
   imagURL: string = "../../assets/news-break.jpg" ;
+
 
   //headline fetch data variables
   HeadlineItems : Array<any> = []
@@ -20,7 +25,7 @@ export class HomeComponent implements OnInit {
   fetchedTopbusinessData:any
 
 
-  constructor(private _dataService : FetchDataServiceService) { }
+  constructor(private _dataService : FetchDataServiceService,private search:SearchService) { }
 
   ngOnInit(): void {
 
@@ -42,7 +47,15 @@ export class HomeComponent implements OnInit {
     },
     (err:any)=> {console.log("Error")},
     ()=> console.log("complete"))
+    this.search.filteredData.subscribe(res =>{
+      this.filteredData=res;
+      // console.log('fromHome',this.filteredData)
+      
+    })
+    this.search.inputValue.subscribe(res =>{
+      this.inputValue=res;
+      // console.log('this.inputValue',this.inputValue)
+    })
 
   }
-
 }

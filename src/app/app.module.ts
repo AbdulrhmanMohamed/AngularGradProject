@@ -15,6 +15,8 @@ import { HomeHeadlineCardsComponent } from './home-headline-cards/home-headline-
 import { HomeTopbusinessCardsComponent } from './home-topbusiness-cards/home-topbusiness-cards.component';
 import { ErrorComponent } from './error/error.component';
 import { AuthModule } from './auth/auth.module';
+import { SearchComponent } from './components/search/search.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -27,7 +29,9 @@ import { AuthModule } from './auth/auth.module';
     ReadingListComponent,
     HomeHeadlineCardsComponent,
     HomeTopbusinessCardsComponent,
-    ErrorComponent
+    ErrorComponent,
+    SearchComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -35,7 +39,8 @@ import { AuthModule } from './auth/auth.module';
     HttpClientModule,
     CardModule,
     ButtonModule,
-    AuthModule
+    AuthModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

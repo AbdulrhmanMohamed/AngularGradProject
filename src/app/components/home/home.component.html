@@ -1,27 +1,35 @@
 
-<div class="container bg-black">
-    <img [src]="imagURL" alt="hero_image" class="img-fluid w-100 m-auto" />
-  <div class="row">
-    <h2 class="text-white text-decoration-underline my-4">Headlines</h2>
-    <div *ngFor="let headline of HeadlineItems" class="col-4 my-4">
-      <app-home-headline-cards [headline]="headline"></app-home-headline-cards>
-    </div>
-    <button
-      pButton
-      type="button"
-      label="View more"
-      class="w-25 m-auto py-2"
-    ></button>
-    <h2 class="text-white text-decoration-underline my-4">Top Business</h2>
-    <div *ngFor="let topbusiness of TopbusinessItem" class="col-4 my-4">
-      <app-home-topbusiness-cards [topbusiness]="topbusiness"></app-home-topbusiness-cards>
-    </div>
-    <button
-      pButton
-      type="button"
-      label="View more"
-      class="w-25 m-auto py-2"
-    ></button>
-  </div>
-</div>
+
+<ng-container *ngIf="!inputValue;else second">
+  <div class="container bg-black">
+     <img [src]="imagURL" alt="hero_image" class="img-fluid w-100 m-auto" />
+   <div class="row">
+     <h2 class="text-white text-decoration-underline my-4">Headlines</h2>
+     <div *ngFor="let headline of HeadlineItems" class="col-4 my-4">
+       <app-home-headline-cards [headline]="headline"></app-home-headline-cards>
+     </div>
+     <button
+       pButton
+       type="button"
+       label="View more"
+       class="w-25 m-auto py-2"
+     ></button>
+     <h2 class="text-white text-decoration-underline my-4">Top Business</h2>
+     <div *ngFor="let topbusiness of TopbusinessItem" class="col-4 my-4">
+       <app-home-topbusiness-cards [topbusiness]="topbusiness"></app-home-topbusiness-cards>
+     </div>
+     <button
+       pButton
+       type="button"
+       label="View more"
+       class="w-25 m-auto py-2"
+     ></button>
+   </div>
+ </div>
+</ng-container>
+  
+ <ng-template #second>
+   <h2 class="text-danger text-center">The Article Should Be Rendered here</h2>
+   <h4 class="text-success text-center">`the renderedData Should be {{filteredData.length}} elements`</h4>
+ </ng-template>
 
