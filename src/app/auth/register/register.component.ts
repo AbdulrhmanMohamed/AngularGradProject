@@ -23,7 +23,6 @@ export class RegisterComponent implements OnInit {
     ConfirmPssword:[null,[Validators.required]]
 
   },
-  
   {
     validator:ConfirmedValidator('Password','ConfirmPssword')
   }
