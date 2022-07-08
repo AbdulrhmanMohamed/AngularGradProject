@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {CardModule} from 'primeng/card';
 import {ButtonModule} from 'primeng/button';
 
@@ -21,6 +21,7 @@ import { TopBusinessMoreComponent } from './components/top-business-more/top-bus
 import { TopBusinessDetailsComponent } from './components/top-business-details/top-business-details.component';
 import { FormsModule } from '@angular/forms';
 import { SearchComponent } from './components/search/search.component';
+import { LanguageInterceptor } from './language.interceptor';
 
 
 @NgModule({
@@ -39,9 +40,8 @@ import { SearchComponent } from './components/search/search.component';
     TopBusinessMoreComponent,
     TopBusinessDetailsComponent,
     SearchComponent,
- 
-   
   ],
+
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -51,7 +51,10 @@ import { SearchComponent } from './components/search/search.component';
     AuthModule,
     FormsModule
   ],
-  providers: [],
+
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: LanguageInterceptor, multi: true},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

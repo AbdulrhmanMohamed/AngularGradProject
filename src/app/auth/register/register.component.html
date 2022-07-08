@@ -30,6 +30,7 @@
             [ngClass]="{'is-invalid' : (getControls['Email'].invalid == true && getControls['Email'].touched)}">
             <div *ngIf="isSubmitted || (getControls['Email'].invalid == true && getControls['Email'].touched)">
                 <p *ngIf="getControls['Email'].errors?.['required']" class="text-danger fw-bold fs-5">Field is Required !</p>
+                <p *ngIf="getControls['Email'].errors?.['pattern']" class="text-danger fw-bold fs-5">Invalid Email pattern!</p>
             </div>
         </div>
     
